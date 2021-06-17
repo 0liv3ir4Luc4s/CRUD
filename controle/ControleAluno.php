@@ -99,5 +99,26 @@
 				return $retorno;
 			}
 		}
+
+		public function selecionarTodos()
+		{
+			try {
+				$con = new Conexao("controle/configs.ini");
+				$comando = $con->getPDO()->prepare("SELECT * FROM aluno;");
+				$retorno = null;
+				if ($comando->execute()) {
+					$retorno = $comando->fetchAll(PDO::FETCH_CLASS, "Aluno");
+				}
+			} catch (PDOException $PDOEx) {
+				$erro = "";
+			} catch (Exception $ex) {
+				$erro = "";
+			} finally {
+				echo "<script>";
+				echo "</script>";
+				$con->fecharConexao();
+				return $retorno;
+			}
+		}
 	}
 
