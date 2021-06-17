@@ -10,11 +10,37 @@
 				$con = new Conexao("controle/configs.ini");	
 				$comando = $con->getPDO()->prepare("INSERT INTO aluno VALUES (:m, :n, :e);");
 				$matricula = $aluno->getMatricula();
-				$comando->bindParam("m", $matricula);
 				$nome = $aluno->getNome();
-				$comando->bindParam("n", $nome);
 				$email = $aluno->getEmail();
+				$comando->bindParam("m", $matricula);
+				$comando->bindParam("n", $nome);
 				$comando->bindParam("e", $email);
+				$retorno = false;
+				if ($comando->execute())
+					$retorno = true;
+			} catch (PDOException $PDOex) {
+				$erro = "";
+			} catch (Exception $ex) {
+				$erro = "";
+			} finally {
+				echo "<script>";
+				echo "</script>";
+				$con->fecharConexao();
+				return $retorno;
+			}
+		}
+		
+		public function editar($aluno)
+		{
+			try {
+				$con = new Conexao("controle/configs.ini");
+				$comando = $con->getPDO()->prepare("UPDATE aluno SET nome=:n, email=:e WHERE matricula=:m");
+				$nome = $aluno->getNome();
+				$email = $aluno->getEmail();
+				$matricula = $aluno->getMatricula();
+				$comando->bindParam("n", $nome);
+				$comando->bindParam("e", $email);
+				$comando->bindParam("m", $matricula);
 				$retorno = false;
 				if ($comando->execute())
 					$retorno = true;
