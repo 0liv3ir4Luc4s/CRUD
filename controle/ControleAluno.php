@@ -2,21 +2,21 @@
 	require_once("controle/Conexao.php");
 	require_once("modelo/Aluno.php");
 	
-	public class ControleAluno
+	class ControleAluno
 	{
-		public function inserir($aluno)
+		public function cadastrar($aluno)
 		{
 			try {
 				$con = new Conexao("controle/configs.ini");	
 				$comando = $con->getPDO()->prepare("INSERT INTO aluno VALUES (:m, :n, :e);");
 				$matricula = $aluno->getMatricula();
-				$comando->bindParam($matricula);
+				$comando->bindParam("m", $matricula);
 				$nome = $aluno->getNome();
-				$comando->bindParam($nome);
+				$comando->bindParam("n", $nome);
 				$email = $aluno->getEmail();
-				$comando->bindParam($email);
+				$comando->bindParam("e", $email);
 				$retorno = false;
-				if ($comando->execute)
+				if ($comando->execute())
 					$retorno = true;
 			} catch (PDOException $PDOex) {
 				$erro = "";
@@ -26,6 +26,7 @@
 				echo "<script>";
 				echo "</script>";
 				$con->fecharConexao();
+				return $retorno;
 			}
 		}
 	}
