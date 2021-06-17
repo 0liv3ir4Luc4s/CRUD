@@ -55,5 +55,24 @@
 				return $retorno;
 			}
 		}
+
+		public function remover($matricula)
+		{
+			try {
+				$con = new Conexao("controle/configs.ini");
+				$retorno = false;
+				if ($con->getPDO()->exec("DELETE FROM aluno WHERE matricula={$matricula};") > 0)
+					$retorno = true;
+			} catch (PDOException $PDOex) {
+				$erro = "";
+			} catch (Exception $ex) {
+				$erro = "";
+			} finally {
+				echo "<script>";
+				echo "</script>";
+				$con->fecharConexao();
+				return $retorno;
+			}
+		}
 	}
 
