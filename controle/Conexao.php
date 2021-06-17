@@ -42,5 +42,10 @@
 		{
 			return $this->pdo;
 		}
+
+		public function fecharConexao()
+		{
+			$this->pdo = null;
+		}
 	}
 
