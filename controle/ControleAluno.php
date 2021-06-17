@@ -74,5 +74,30 @@
 				return $retorno;
 			}
 		}
+
+		public function selecionarUm($matricula)
+		{
+			try {
+				$con = new Conexao("controle/configs.ini");
+				$comando = $con->getPDO()->prepare("SELECT * FROM aluno WHERE matricula={$matricula};");
+				$retorno = null;
+				if ($comando->execute()) {
+					$aluno = $comando->fetchAll(PDO::FETCH_CLASS, "Aluno");
+					$retorno = new Aluno();
+					$retorno->setMatricula($aluno[0]->getMatricula());
+					$retorno->setNome($aluno[0]->getNome());
+					$retorno->setEmail($aluno[0]->getEmail());
+				}
+			} catch (PDOException $PDOex) {
+				$erro = "";
+			} catch (Exception $ex) {
+				$erro = "";
+			} finally {
+				echo "<script>";
+				echo "</script>";
+				$con->fecharConexao();
+				return $retorno;
+			}
+		}
 	}
 
