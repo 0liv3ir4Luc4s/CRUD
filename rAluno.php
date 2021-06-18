@@ -1,6 +1,6 @@
 <?php
 	require_once("controle/ControleAluno.php");
-	if (isset($_POST["matricula"])) {
+	if (!empty($_POST["matricula"])) {
 		$controle = new ControleAluno();	
 		if ($controle->remover(intval($_POST["matricula"]))) {
 			echo "<script>";

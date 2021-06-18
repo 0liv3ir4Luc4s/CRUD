@@ -1,6 +1,6 @@
 <?php
 	require_once("controle/ControleAluno.php");
-	if (isset($_POST["matricula"]) && isset($_POST["nome"]) && isset($_POST["email"])) {
+	if (!empty($_POST["matricula"]) && !empty($_POST["nome"]) && !empty($_POST["email"])) {
 		$aluno = new Aluno();
 		$aluno->setMatricula(intval($_POST["matricula"]));
 		$aluno->setNome($_POST["nome"]);

@@ -1,6 +1,6 @@
 <?php
 	require_once("controle/ControleCurso.php");
-if (isset($_POST["id"]) && isset($_POST["nome"]) && isset($_POST["coordenador"])) {
+if (!empty($_POST["id"]) && !empty($_POST["nome"]) && !empty($_POST["coordenador"])) {
 		$curso = new Curso();
 		$curso->setId(intval($_POST["id"]));
 		$curso->setNome($_POST["nome"]);
