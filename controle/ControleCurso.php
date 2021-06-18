@@ -54,12 +54,12 @@
 			}
 		}
 
-		public function remover($matricula)
+		public function remover($id)
 		{
 			try {
 				$con = new Conexao("controle/configs.ini");
 				$retorno = false;
-				if ($con->getPDO()->exec("DELETE FROM aluno WHERE matricula={$matricula};") > 0)
+				if ($con->getPDO()->exec("DELETE FROM curso WHERE id={$id};") > 0)
 					$retorno = true;
 			} catch (PDOException $PDOex) {
 				$erro = "";
