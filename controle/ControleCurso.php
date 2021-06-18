@@ -102,10 +102,10 @@
 		{
 			try {
 				$con = new Conexao("controle/configs.ini");
-				$comando = $con->getPDO()->prepare("SELECT * FROM aluno;");
+				$comando = $con->getPDO()->prepare("SELECT * FROM curso;");
 				$retorno = null;
 				if ($comando->execute()) {
-					$retorno = $comando->fetchAll(PDO::FETCH_CLASS, "Aluno");
+					$retorno = $comando->fetchAll(PDO::FETCH_CLASS, "Curso");
 				}
 			} catch (PDOException $PDOEx) {
 				$erro = "";
