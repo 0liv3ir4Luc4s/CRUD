@@ -28,7 +28,7 @@
 		
 		public function editar($turma)
 		{
-			try {
+			try 
 				$con = new Conexao("controle/configs.ini");
 				$comando = $con->getPDO()->prepare("UPDATE turma SET serie=:s WHERE id=:i;");
 				$serie = $turma->getSerie();
@@ -55,7 +55,7 @@
 			try {
 				$con = new Conexao("controle/configs.ini");
 				$retorno = false;
-				if ($con->getPDO()->exec("DELETE FROM curso WHERE id={$id};") > 0)
+				if ($con->getPDO()->exec("DELETE FROM turma WHERE id={$id};") > 0)
 					$retorno = true;
 			} catch (PDOException $PDOex) {
 				$erro = "";
