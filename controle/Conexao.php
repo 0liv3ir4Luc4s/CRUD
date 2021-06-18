@@ -23,8 +23,6 @@
 						$this->pdo = new PDO("{$this->driver}:host={$this->host};dbname={$this->dbname}",
 							$this->user, $this->pwd);
 						$this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-						echo "Deu certo";
 					} else {
 						die("SGBD não suportado pelo sistema");
 					}
