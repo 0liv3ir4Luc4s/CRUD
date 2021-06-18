@@ -28,17 +28,17 @@
 			}
 		}
 		
-		public function editar($aluno)
+		public function editar($curso)
 		{
 			try {
 				$con = new Conexao("controle/configs.ini");
-				$comando = $con->getPDO()->prepare("UPDATE aluno SET nome=:n, email=:e WHERE matricula=:m");
-				$nome = $aluno->getNome();
-				$email = $aluno->getEmail();
-				$matricula = $aluno->getMatricula();
+				$comando = $con->getPDO()->prepare("UPDATE curso SET nome=:n, coordenador=:c WHERE id=:i;");
+				$nome = $curso->getNome();
+				$coordenador = $curso->getCoordenador();
+				$id = $curso->getId();
 				$comando->bindParam("n", $nome);
-				$comando->bindParam("e", $email);
-				$comando->bindParam("m", $matricula);
+				$comando->bindParam("c", $coordenador);
+				$comando->bindParam("i", $id);
 				$retorno = false;
 				if ($comando->execute())
 					$retorno = true;
