@@ -1,6 +1,6 @@
 <?php
 	require_once("controle/Conexao.php");
-	require_once("modelo/Aluno.php");
+	require_once("modelo/Curso.php");
 	
 	class ControleCurso
 	{
@@ -73,18 +73,18 @@
 			}
 		}
 
-		public function selecionarUm($matricula)
+		public function selecionarUm($id)
 		{
 			try {
 				$con = new Conexao("controle/configs.ini");
-				$comando = $con->getPDO()->prepare("SELECT * FROM aluno WHERE matricula={$matricula};");
+				$comando = $con->getPDO()->prepare("SELECT * FROM curso WHERE id={$id};");
 				$retorno = null;
 				if ($comando->execute()) {
-					$aluno = $comando->fetchAll(PDO::FETCH_CLASS, "Aluno");
-					$retorno = new Aluno();
-					$retorno->setMatricula($aluno[0]->getMatricula());
-					$retorno->setNome($aluno[0]->getNome());
-					$retorno->setEmail($aluno[0]->getEmail());
+					$curso = $comando->fetchAll(PDO::FETCH_CLASS, "Curso");
+					$retorno = new Curso();
+					$retorno->setId($curso[0]->getId());
+					$retorno->setNome($curso[0]->getNome());
+					$retorno->setCoordenador($curso[0]->getCoordenador());
 				}
 			} catch (PDOException $PDOex) {
 				$erro = "";
