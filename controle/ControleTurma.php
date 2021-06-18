@@ -73,14 +73,13 @@
 		{
 			try {
 				$con = new Conexao("controle/configs.ini");
-				$comando = $con->getPDO()->prepare("SELECT * FROM curso WHERE id={$id};");
+				$comando = $con->getPDO()->prepare("SELECT * FROM turma WHERE id={$id};");
 				$retorno = null;
 				if ($comando->execute()) {
-					$curso = $comando->fetchAll(PDO::FETCH_CLASS, "Curso");
-					$retorno = new Curso();
-					$retorno->setId($curso[0]->getId());
-					$retorno->setNome($curso[0]->getNome());
-					$retorno->setCoordenador($curso[0]->getCoordenador());
+					$turma = $comando->fetchAll(PDO::FETCH_CLASS, "Turma");
+					$retorno = new Turma();
+					$retorno->setId($turma[0]->getId());
+					$retorno->setSerie($serie[0]->getSerie());
 				}
 			} catch (PDOException $PDOex) {
 				$erro = "";
