@@ -114,6 +114,47 @@
 				return $retorno;
 			}
 		}
+		
+		public function selecionarTodos()
+		{
+			try {
+				$con = new Conexao("controle/configs.ini");
+				$comando = $con->getPDO()->prepare("SELECT relacionamento.id, aluno.matricula, aluno.nome AS 'nome_aluno', aluno.email, curso.nome AS 'nome_curso', curso.coordenador, turma.serie FROM relacionamento INNER JOIN aluno ON relacionamento.aluno = aluno.matricula INNER JOIN curso ON relacionamento.curso = curso.id INNER JOIN turma ON relacionamento.turma = turma.id;");
+				$retorno = null;
+				if ($comando->execute()) {
+					$retorno = array();
+					$rels = $comando->fetchAll(PDO::FETCH_ASSOC);
+					foreach($rels as $rel) {
+						$relacionamento = new Relacionamento();
+						$relacionamento->setId($rel["id"]);
+						$relacionamento->setTurma($rel["serie"]);
+
+						$a = new Aluno();
+						$a->setMatricula($rel["matricula"]);
+						$a->setNome($rel["nome_aluno"]);
+						$a->setEmail($rel["email"]);
+
+						$c = new Curso();
+						$c->setNome($rel["nome_curso"]);
+						$c->setCoordenador($rel["coordenador"]);
+
+						$relacionamento->setAluno($a);
+						$relacionamento->setCurso($c);
+
+						$retorno[] = $relacionamento;
+					}
+				}
+			} catch (PDOException $PDOEx) {
+				$erro = "";
+			} catch (Exception $ex) {
+				$erro = "";
+			} finally {
+				echo "<script>";
+				echo "</script>";
+				$con->fecharConexao();
+				return $retorno;
+			}
+		}
 
 	}
 
