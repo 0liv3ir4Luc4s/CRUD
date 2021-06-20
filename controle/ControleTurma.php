@@ -28,7 +28,7 @@
 		
 		public function editar($turma)
 		{
-			try 
+			try { 
 				$con = new Conexao("controle/configs.ini");
 				$comando = $con->getPDO()->prepare("UPDATE turma SET serie=:s WHERE id=:i;");
 				$serie = $turma->getSerie();
