@@ -12,11 +12,11 @@
 			try {
 				$con = new Conexao("controle/configs.ini");	
 				$comando = $con->getPDO()->prepare("INSERT INTO relacionamento(aluno, turma, curso) VALUES (:a, :t, :c);");
-				$aluno = $relacionamento->getAluno()->getMatricula();
+				$aluno = $relacionamento->getAluno();
 				$comando->bindParam("a", $aluno);
 				$turma = $relacionamento->getTurma();
 				$comando->bindParam("t", $turma);
-				$curso = $relacionamento->getCurso()->getId();
+				$curso = $relacionamento->getCurso();
 				$comando->bindParam("c", $curso);
 				$retorno = false;
 				if ($comando->execute())
@@ -38,11 +38,11 @@
 			try { 
 				$con = new Conexao("controle/configs.ini");
 				$comando = $con->getPDO()->prepare("UPDATE relacionamento SET aluno=:a, turma=:t, curso=:c WHERE id=:i;");
-				$aluno = $relacionamento->getAluno()->getMatricula();
+				$aluno = $relacionamento->getAluno();
 				$comando->bindParam("a", $aluno);
 				$turma = $relacionamento->getTurma();
 				$comando->bindParam("t", $turma);
-				$curso = $relacionamento->getCurso()->getId();
+				$curso = $relacionamento->getCurso();
 				$comando->bindParam("c", $curso);
 				$comando->bindParam("i", $id);
 				$retorno = false;
