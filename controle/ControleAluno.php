@@ -30,14 +30,13 @@
 			}
 		}
 		
-		public function editar($aluno)
+		public function editar($aluno, $matricula)
 		{
 			try {
 				$con = new Conexao("controle/configs.ini");
 				$comando = $con->getPDO()->prepare("UPDATE aluno SET nome=:n, email=:e WHERE matricula=:m");
 				$nome = $aluno->getNome();
 				$email = $aluno->getEmail();
-				$matricula = $aluno->getMatricula();
 				$comando->bindParam("n", $nome);
 				$comando->bindParam("e", $email);
 				$comando->bindParam("m", $matricula);

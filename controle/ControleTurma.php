@@ -26,13 +26,12 @@
 			}
 		}
 		
-		public function editar($turma)
+		public function editar($turma, $id)
 		{
 			try { 
 				$con = new Conexao("controle/configs.ini");
 				$comando = $con->getPDO()->prepare("UPDATE turma SET serie=:s WHERE id=:i;");
 				$serie = $turma->getSerie();
-				$id = $turma->getId();
 				$comando->bindParam("s", $serie);
 				$comando->bindParam("i", $id);
 				$retorno = false;

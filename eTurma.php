@@ -2,10 +2,9 @@
 	require_once("controle/ControleTurma.php");
 	if (!empty($_POST["id"]) && !empty($_POST["serie"])) {
 		$turma = new Turma();
-		$turma->setId(intval($_POST["id"]));
 		$turma->setSerie($_POST["serie"]);
 		$controle = new ControleTurma();	
-		if ($controle->editar($turma)) {
+		if ($controle->editar($turma, intval($_POST["id"]))) {
 			echo "<script>";
 			echo "alertify.success('Operação bem sucedida');";
 			echo "</script>";
