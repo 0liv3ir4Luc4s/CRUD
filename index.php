@@ -37,9 +37,9 @@
 			<div class="d-flex justify-content-center">
 				<div class="d-flex d-sm-none">
 					<div class="btn-group my-3" role="group" aria-label="Ações">
-						<a type="#" class="btn btn-success btn-lg"><i class="bi bi-plus-lg"></i></a>
-						<a type="#" class="btn btn-warning btn-lg"><i class="bi bi-pen"></i></a>
-						<a type="#" class="btn btn-danger btn-lg"><i class="bi bi-trash"></i></i></a>
+						<a type="cadastrarRelacionamento.php" class="btn btn-success btn-lg"><i class="bi bi-plus-lg"></i></a>
+						<a type="editarRelacionamento.php" class="btn btn-warning btn-lg"><i class="bi bi-pen"></i></a>
+						<a type="removerRelacionamento.php" class="btn btn-danger btn-lg"><i class="bi bi-trash"></i></i></a>
 					</div>
 				</div>
 				<div class="d-none d-sm-block ">
@@ -77,7 +77,7 @@
 							echo "<td>{$lista[$i]->getCurso()->getNome()}</td>";
 							echo "<td>{$lista[$i]->getCurso()->getCoordenador()}</td>";
 							echo "<td>{$lista[$i]->getTurma()}</td>";
-							echo "<td><button id='btnEditar' type='button' class='btn btn-warning btn-sm'><i class='bi bi-pen'></i></button></td>";
+							echo "<td><a id='btnEditar' href='editarRelacionamento.php?id={$lista[$i]->getID()}' class='btn btn-warning btn-sm'><i class='bi bi-pen'></i></a></td>";
 							echo "<td><button id='btnRemover' type='button' class='btn btn-danger btn-sm'><i class='bi bi-trash'></i></button></td>";
 							echo "</tr>";
 						}
