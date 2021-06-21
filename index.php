@@ -37,18 +37,53 @@
 			<div class="d-flex justify-content-center">
 				<div class="d-flex d-sm-none">
 					<div class="btn-group my-3" role="group" aria-label="Ações">
-						<button type="button" class="btn btn-success btn-lg"><i class="bi bi-plus-lg"></i></button>
-						<button type="button" class="btn btn-warning btn-lg"><i class="bi bi-pen"></i></button>
-						<button type="button" class="btn btn-danger btn-lg"><i class="bi bi-trash"></i></i></button>
+						<a type="#" class="btn btn-success btn-lg"><i class="bi bi-plus-lg"></i></a>
+						<a type="#" class="btn btn-warning btn-lg"><i class="bi bi-pen"></i></a>
+						<a type="#" class="btn btn-danger btn-lg"><i class="bi bi-trash"></i></i></a>
 					</div>
 				</div>
 				<div class="d-none d-sm-block ">
 					<div class="d-flex gap-3 my-3">
-						<button type="button" class="btn btn-success">Cadastrar</button>
-						<button type="button" class="btn btn-warning">Editar</button>
-						<button type="button" class="btn btn-danger">Remover</button>
+						<a href="cadastrarRelacionamento.php" class="btn btn-success">Cadastrar</a>
+						<a href="editarRelacionamento.php" class="btn btn-warning">Editar</a>
+						<a href="removerRelacionamento.php" class="btn btn-danger">Remover</a>
 					</div>
 				</div>
+			</div>
+			<div class="table-responsive-sm">
+				<table class="table table-hover">
+				<thead>
+					<tr class="table-dark">
+						<th>ID</th>
+						<th>Aluno</th>
+						<th>Email</th>
+						<th>Curso</th>
+						<th>Coordenador</th>
+						<th>Turma</th>
+						<th>Editar</th>
+						<th>Remover</th>
+					</tr>
+					</thead>
+					<tbody>
+					<?php
+						require_once("controle/ControleRelacionamento.php");
+						$cont = new ControleRelacionamento();
+						$lista = $cont->selecionarTodos();
+						for ($i = 0; $i < sizeof($lista); $i++) {
+							echo "<tr>";
+							echo "<td>{$lista[$i]->getId()}</td>";
+							echo "<td>{$lista[$i]->getAluno()->getNome()}</td>";
+							echo "<td>{$lista[$i]->getAluno()->getEmail()}</td>";
+							echo "<td>{$lista[$i]->getCurso()->getNome()}</td>";
+							echo "<td>{$lista[$i]->getCurso()->getCoordenador()}</td>";
+							echo "<td>{$lista[$i]->getTurma()}</td>";
+							echo "<td><button id='btnEditar' type='button' class='btn btn-warning btn-sm'><i class='bi bi-pen'></i></button></td>";
+							echo "<td><button id='btnRemover' type='button' class='btn btn-danger btn-sm'><i class='bi bi-trash'></i></button></td>";
+							echo "</tr>";
+						}
+					?>
+					</tbody>
+			</table>
 			</div>
 		</main>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
