@@ -28,14 +28,13 @@
 			}
 		}
 		
-		public function editar($curso)
+		public function editar($curso, $id)
 		{
 			try {
 				$con = new Conexao("controle/configs.ini");
 				$comando = $con->getPDO()->prepare("UPDATE curso SET nome=:n, coordenador=:c WHERE id=:i;");
 				$nome = $curso->getNome();
 				$coordenador = $curso->getCoordenador();
-				$id = $curso->getId();
 				$comando->bindParam("n", $nome);
 				$comando->bindParam("c", $coordenador);
 				$comando->bindParam("i", $id);

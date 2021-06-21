@@ -2,11 +2,10 @@
 	require_once("controle/ControleCurso.php");
 if (!empty($_POST["id"]) && !empty($_POST["nome"]) && !empty($_POST["coordenador"])) {
 		$curso = new Curso();
-		$curso->setId(intval($_POST["id"]));
 		$curso->setNome($_POST["nome"]);
 		$curso->setCoordenador($_POST["coordenador"]);
 		$controle = new ControleCurso();	
-		if ($controle->editar($curso)) {
+		if ($controle->editar($curso, intval($_POST["id"]))) {
 			echo "<script>";
 			echo "alertify.success('Operação bem sucedida');";
 			echo "</script>";

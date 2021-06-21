@@ -2,12 +2,11 @@
 	require_once("controle/ControleRelacionamento.php");
 	if (!empty($_POST["id"]) && !empty($_POST["aluno"]) && !empty($_POST["turma"]) && !empty($_POST["curso"])) {
 		$rel = new Relacionamento();
-		$rel->setId(intval($_POST["id"]));
 		$rel->setAluno(intval($_POST["aluno"]));
 		$rel->setTurma(intval($_POST["turma"]));
 		$rel->setCurso(intval($_POST["email"]));
 		$controle = new ControleRelacionamento();	
-		if ($controle->cadastrar($rel)) {
+		if ($controle->editar($rel, intval($_POST["id"]))) {
 			echo "<script>";
 			echo "alertify.success('Operação bem sucedida');";
 			echo "</script>";
