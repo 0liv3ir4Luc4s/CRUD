@@ -145,11 +145,12 @@
 					}
 				}
 			} catch (PDOException $PDOEx) {
-				$erro = "";
+				$erro = "Erro no banco de dados ao listar";
 			} catch (Exception $ex) {
-				$erro = "";
+				$erro = "Erro geral ao listar";
 			} finally {
 				echo "<script>";
+				echo "alertify.error({$erro});";
 				echo "</script>";
 				$con->fecharConexao();
 				return $retorno;
