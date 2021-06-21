@@ -1,6 +1,6 @@
 <?php
 	require_once("controle/ControleTurma.php");
-	if (!empty($_POST["id"])) {
+	if (!empty($_GET["id"])) {
 		$controle = new ControleTurma();	
 		$turma = $controle->selecionarUm(intval($_POST["id"]));
 		if (!empty($turma)) {

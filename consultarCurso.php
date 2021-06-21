@@ -1,6 +1,6 @@
 <?php
 	require_once("controle/ControleCurso.php");
-	if (!empty($_POST["id"])) {
+	if (!empty($_GET["id"])) {
 		$controle = new ControleCurso();	
 		$curso = $controle->selecionarUm(intval($_POST["id"]));
 		if (!empty($curso)) {

@@ -1,6 +1,6 @@
 <?php
 	require_once("controle/ControleRelacionamento.php");
-	if (!empty($_POST["id"])) {
+	if (!empty($_GET["id"])) {
 		$controle = new ControleRelacionamento();	
 		$relacionamento = $controle->selecionarUm(intval($_POST["id"]));
 		if (!empty($relacionamento)) {

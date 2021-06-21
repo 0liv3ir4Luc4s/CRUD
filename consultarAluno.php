@@ -1,6 +1,6 @@
 <?php
 	require_once("controle/ControleAluno.php");
-	if (!empty($_POST["matricula"])) {
+	if (!empty($_GET["matricula"])) {
 		$controle = new ControleAluno();	
 		$aluno = $controle->selecionarUm(1);
 		if (!empty($aluno)) {
