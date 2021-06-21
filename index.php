@@ -4,6 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 		<title>Página Inicial</title>
 	</head>
 	<body>
@@ -32,8 +33,23 @@
 				</div>
 			</div>
 		</header>
-		<main>
-			
+		<main class="container-fluid">
+			<div class="d-flex justify-content-center">
+				<div class="d-flex d-sm-none">
+					<div class="btn-group my-3" role="group" aria-label="Ações">
+						<button type="button" class="btn btn-success btn-lg"><i class="bi bi-plus-lg"></i></button>
+						<button type="button" class="btn btn-warning btn-lg"><i class="bi bi-pen"></i></button>
+						<button type="button" class="btn btn-danger btn-lg"><i class="bi bi-trash"></i></i></button>
+					</div>
+				</div>
+				<div class="d-none d-sm-block ">
+					<div class="d-flex gap-3 my-3">
+						<button type="button" class="btn btn-success">Cadastrar</button>
+						<button type="button" class="btn btn-warning">Editar</button>
+						<button type="button" class="btn btn-danger">Remover</button>
+					</div>
+				</div>
+			</div>
 		</main>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
 	</body>
