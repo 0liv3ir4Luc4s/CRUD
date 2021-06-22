@@ -14,15 +14,18 @@
 				$comando->bindParam("n", $nome);
 				$comando->bindParam("c", $coordenador);
 				$retorno = false;
-				if ($comando->execute())
+				if ($comando->execute()) {
 					$retorno = true;
+				}
 			} catch (PDOException $PDOex) {
-				$erro = "";
-			} catch (Exception $ex) {
-				$erro = "";
-			} finally {
 				echo "<script>";
+				echo "console.error('Erro no banco de dados ao editar relacionamento');";
+				echo "</script>";		
+			} catch (Exception $ex) {
+				echo "<script>";
+				echo "console.error('Erro geral ao editar relacionamento');";
 				echo "</script>";
+			} finally {
 				$con->fecharConexao();
 				return $retorno;
 			}
@@ -39,15 +42,18 @@
 				$comando->bindParam("c", $coordenador);
 				$comando->bindParam("i", $id);
 				$retorno = false;
-				if ($comando->execute())
+				if ($comando->execute()) {
 					$retorno = true;
+				}
 			} catch (PDOException $PDOex) {
-				$erro = "";
-			} catch (Exception $ex) {
-				$erro = "";
-			} finally {
 				echo "<script>";
+				echo "console.error('Erro no banco de dados ao editar curso');";
 				echo "</script>";
+			} catch (Exception $ex) {
+				echo "<script>";
+				echo "console.error('Erro geral ao editar curso');";
+				echo "</script>";
+			} finally {
 				$con->fecharConexao();
 				return $retorno;
 			}
@@ -58,15 +64,18 @@
 			try {
 				$con = new Conexao("controle/configs.ini");
 				$retorno = false;
-				if ($con->getPDO()->exec("DELETE FROM curso WHERE id={$id};") > 0)
+				if ($con->getPDO()->exec("DELETE FROM curso WHERE id={$id};") > 0) {
 					$retorno = true;
+				}
 			} catch (PDOException $PDOex) {
-				$erro = "";
-			} catch (Exception $ex) {
-				$erro = "";
-			} finally {
 				echo "<script>";
+				echo "console.error('Erro no banco de dados ao remover curso');";
 				echo "</script>";
+			} catch (Exception $ex) {
+				echo "<script>";
+				echo "console.error('Erro geral ao remover curso');";
+				echo "</script>";
+			} finally {
 				$con->fecharConexao();
 				return $retorno;
 			}
@@ -86,12 +95,14 @@
 					$retorno->setCoordenador($curso[0]->getCoordenador());
 				}
 			} catch (PDOException $PDOex) {
-				$erro = "";
-			} catch (Exception $ex) {
-				$erro = "";
-			} finally {
 				echo "<script>";
+				echo "console.error('Erro no banco de dados ao selecionar curso');";
 				echo "</script>";
+			} catch (Exception $ex) {
+				echo "<script>";
+				echo "console.error('Erro geral ao selecionar curso');";
+				echo "</script>";
+			} finally {
 				$con->fecharConexao();
 				return $retorno;
 			}
@@ -106,13 +117,15 @@
 				if ($comando->execute()) {
 					$retorno = $comando->fetchAll(PDO::FETCH_CLASS, "Curso");
 				}
-			} catch (PDOException $PDOEx) {
-				$erro = "";
-			} catch (Exception $ex) {
-				$erro = "";
-			} finally {
+			} catch (PDOException $PDOex) {
 				echo "<script>";
+				echo "console.error('Erro geral ao listar curso');";
 				echo "</script>";
+			} catch (Exception $ex) {
+				echo "<script>";
+				echo "console.error('Erro geral ao listar curso');";
+				echo "</script>";
+			} finally {
 				$con->fecharConexao();
 				return $retorno;
 			}

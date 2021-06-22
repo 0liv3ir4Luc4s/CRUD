@@ -2,31 +2,20 @@
 	require_once("controle/ControleCurso.php");
 	if (!empty($_GET["id"])) {
 		$controle = new ControleCurso();	
-		$curso = $controle->selecionarUm(intval($_POST["id"]));
+		$curso = $controle->selecionarUm(intval($_GET["id"]));
 		if (!empty($curso)) {
-			echo "<table>";
-				echo "<thead>";
-					echo "<tr>";
-						echo "<th>Id</th>";
-						echo "<th>Nome</th>";
-						echo "<th>Coordenador</th>";
-					echo "</tr>";
-				echo "</thead>"; 
-				echo "<tbody>";
-					echo "<tr>";
-						echo "<td>{$curso->getId()}</td>";	
-						echo "<td>{$curso->getNome()}</td>";
-						echo "<td>{$curso->getCoordenador()}</td>";
-					echo "</tr>";
-				echo "</tbody>";
-			echo "</table>";
+			echo "<tr>";
+				echo "<td id='id_curso'>{$curso->getId()}</td>";	
+				echo "<td id='nome'>{$curso->getNome()}</td>";
+				echo "<td id='coordenador'>{$curso->getCoordenador()}</td>";
+			echo "</tr>";
 		} else {
 			echo "<script>";
-			echo "alertify.error('Curso não cadastrado');";
+			echo "curso.error('Curso não cadastrado');";
 			echo "</script>";
 		}
 	} else {
 		echo "<script>";
-		echo "alertify.error('Não deixe campos em branco!');";
+		echo "curso.error('Não deixe campos em branco!');";
 		echo "</script>";
 	}	

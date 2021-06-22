@@ -73,7 +73,7 @@
                         <input id="id" class="form-control" type="number" name="id" required>
                     </div>
                     <div class="mt-3">
-                        <input type="submit" class="btn btn-danger" value="Remover" required>
+                        <input type="submit" class="btn btn-danger" value="Remover">
                     </div>
                 </form>
             </div>

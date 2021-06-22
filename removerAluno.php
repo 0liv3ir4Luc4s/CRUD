@@ -78,7 +78,7 @@
                         <input id="matricula" class="form-control" type="number" name="matricula" required>
                     </div>
                     <div class="mt-3">
-                        <input type="submit" class="btn btn-danger" value="Remover" required>
+                        <input type="submit" class="btn btn-danger" value="Remover">
                     </div>
                 </form>
             </div>

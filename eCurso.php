@@ -7,16 +7,16 @@ if (!empty($_POST["id"]) && !empty($_POST["nome"]) && !empty($_POST["coordenador
 		$controle = new ControleCurso();	
 		if ($controle->editar($curso, intval($_POST["id"]))) {
 			echo "<script>";
-			echo "alertify.success('Operação bem sucedida');";
+			echo "console.success('Operação bem sucedida');";
 			echo "</script>";
             header("Location: http://localhost/av_php/editarCurso.php");
 		} else {
 			echo "<script>";
-			echo "alertify.error('Erro na operação');";
+			echo "console.error('Erro na operação');";
 			echo "</script>";
 		}
 	} else {
 		echo "<script>";
-		echo "alertify.error('Não deixe campos em branco!');";
+		echo "console.error('Não deixe campos em branco!');";
 		echo "</script>";
 	}	

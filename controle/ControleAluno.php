@@ -25,7 +25,7 @@
 				echo "</script>";
 			} catch (Exception $ex) {
 				echo "<script>";
-				echo "console.error('Erro geral ao cadastrar relacionamento');";
+				echo "console.error('Erro geral ao cadastrar aluno');";
 				echo "</script>";
 			} finally {
 				$con->fecharConexao();
@@ -49,11 +49,11 @@
 				}
 			} catch (PDOException $PDOex) {
 				echo "<script>";
-				echo "console.error('Erro no banco de dados ao editar relacionamento');";
+				echo "console.error('Erro no banco de dados ao editar aluno');";
 				echo "</script>";
 			} catch (Exception $ex) {
 				echo "<script>";
-				echo "console.error('Erro geral ao editar relacionamento');";
+				echo "console.error('Erro geral ao editar aluno');";
 				echo "</script>";
 			} finally {
 				$con->fecharConexao();
@@ -71,11 +71,11 @@
 				}
 			} catch (PDOException $PDOex) {
 				echo "<script>";
-				echo "console.error('Erro no banco de dados ao remover relacionamento');";
+				echo "console.error('Erro no banco de dados ao remover aluno');";
 				echo "</script>";
 			} catch (Exception $ex) {
 				echo "<script>";
-				echo "console.error('Erro geral ao remover relacionamento');";
+				echo "console.error('Erro geral ao remover aluno');";
 				echo "</script>";
 			} finally {
 				$con->fecharConexao();
@@ -98,11 +98,11 @@
 				}
 			} catch (PDOException $PDOex) {
 				echo "<script>";
-				echo "console.error('Erro geral ao selecionar relacionamento');";
+				echo "console.error('Erro geral ao selecionar aluno');";
 				echo "</script>";
 			} catch (Exception $ex) {
 				echo "<script>";
-				echo "console.error('Erro geral ao selecionar relacionamento');";
+				echo "console.error('Erro geral ao selecionar aluno');";
 				echo "</script>";
 			} finally {
 				$con->fecharConexao();
@@ -121,11 +121,11 @@
 				}
 			} catch (PDOException $PDOEx) {
 				echo "<script>";
-				echo "console.error('Erro no banco de dados ao listar relacionamento');";
+				echo "console.error('Erro no banco de dados ao listar aluno');";
 				echo "</script>";
 			} catch (Exception $ex) {
 				echo "<script>";
-				echo "console.error('Erro geral ao listar relacionamento');";
+				echo "console.error('Erro geral ao listar aluno');";
 				echo "</script>";
 			} finally {
 				$con->fecharConexao();

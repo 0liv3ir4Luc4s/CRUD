@@ -72,7 +72,7 @@
                         </select>
                     </div>
                     <div class="mt-3">
-                        <input type="submit" class="btn btn-success" value="Cadastrar" required>
+                        <input type="submit" class="btn btn-success" value="Cadastrar">
                     </div>
                 </form>
             </div>

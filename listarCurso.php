@@ -7,7 +7,7 @@
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 		<link rel="stylesheet" href="css/lib/alertify.min.css">
 		<link rel="stylesheet" href="css/lib/default.min.css">
-		<title>Home Aluno</title>
+		<title>Home Curso</title>
 	</head>
 	<body>
 		<script src="js/lib/alertify.min.js"></script>
@@ -22,26 +22,26 @@
 							<nav>
 								<ul class="navbar-nav">
                                     <li class="nav-item dropdown">
-										<a href="#" class="nav-link active" aria-current="page" role="button" id="dropAluno" data-bs-toggle="dropdown" aria-expanded="false">Aluno</a>
+										<a href="#" class="nav-link" role="button" id="dropAluno" data-bs-toggle="dropdown" aria-expanded="false">Aluno</a>
 										<ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropAluno">
-											<li><a href="index.php" class="dropdown-item active" aria-current="page">Lista</a></li>
+											<li><a href="index.php" class="dropdown-item">Lista</a></li>
 											<li><a href="cadastrarAluno.php" class="dropdown-item">Cadastrar</a></li>
 											<li><a href="editarAluno.php" class="dropdown-item">Editar</a></li>
 											<li><a href="removerAluno.php" class="dropdown-item">Remover</a></li>
 										</ul>
 									</li>
-									<li class="nav-item dropdown">
-										<a href="#" class="nav-link" role="button" id="dropCurso" data-bs-toggle="dropdown" aria-expanded="false">Curso</a>
+                                    <li class="nav-item dropdown">
+										<a href="#" class="nav-link active" aria-current="page" role="button" id="dropCurso" data-bs-toggle="dropdown" aria-expanded="false">Curso</a>
 										<ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropCurso">
-											<li><a href="listarCurso.php" class="dropdown-item" >Lista</a></li>
+											<li><a href="listarCurso.php" class="dropdown-item active" aria-current="page">Lista</a></li>
 											<li><a href="cadastrarCurso.php" class="dropdown-item">Cadastrar</a></li>
 											<li><a href="editarCurso.php" class="dropdown-item">Editar</a></li>
 											<li><a href="removerCurso.php" class="dropdown-item">Remover</a></li>
 										</ul>
 									</li>
 									<li class="nav-item dropdown">
-										<a href="#" class="nav-link" role="button" id="dropAluno" data-bs-toggle="dropdown" aria-expanded="false">Relacionamento</a>
-										<ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropAluno">
+										<a href="#" class="nav-link" role="button" id="dropRelacionamento" data-bs-toggle="dropdown" aria-expanded="false">Relacionamento</a>
+										<ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropRelacionamento">
 											<li><a href="index.php" class="dropdown-item">Lista</a></li>
 											<li><a href="cadastrarRelacionamento.php" class="dropdown-item">Cadastrar</a></li>
 											<li><a href="editarRelacionamento.php" class="dropdown-item">Editar</a></li>
@@ -54,28 +54,28 @@
 					</div>
 				</div>
 			</header>
-			<main class="container-fluid">
+            <main class="container-fluid">
 				<div class="d-flex justify-content-center">
 					<div class="d-flex d-sm-none">
 						<div class="btn-group my-3" role="group" aria-label="Ações">
-							<a href="cadastrarAluno.php" class="btn btn-success btn-lg"><i class="bi bi-plus-lg"></i></a>
-							<a href="editarAluno.php" class="btn btn-warning btn-lg"><i class="bi bi-pen"></i></a>
-							<a href="removerAluno.php" class="btn btn-danger btn-lg"><i class="bi bi-trash"></i></i></a>
+							<a href="cadastrarCurso.php" class="btn btn-success btn-lg"><i class="bi bi-plus-lg"></i></a>
+							<a href="editarCurso.php" class="btn btn-warning btn-lg"><i class="bi bi-pen"></i></a>
+							<a href="removerCurso.php" class="btn btn-danger btn-lg"><i class="bi bi-trash"></i></i></a>
 						</div>
 					</div>
 					<div class="d-none d-sm-block">
 						<div class="d-flex gap-3 my-3">
-							<a href="cadastrarAluno.php" class="btn btn-success">Cadastrar</a>
-							<a href="editarAluno.php" class="btn btn-warning">Editar</a>
-							<a href="removerAluno.php" class="btn btn-danger">Remover</a>
+							<a href="cadastrarCurso.php" class="btn btn-success">Cadastrar</a>
+							<a href="editarCurso.php" class="btn btn-warning">Editar</a>
+							<a href="removerCurso.php" class="btn btn-danger">Remover</a>
 						</div>
 					</div>
 				</div>
 				<div class="d-flex flex-wrap d-sm-none">
 					<div class="row row-cols-2">
 						<?php
-							require_once("controle/ControleAluno.php");
-							$cont = new ControleAluno();
+							require_once("controle/ControleCurso.php");
+							$cont = new ControleCurso();
 							$lista = $cont->selecionarTodos();
 							for ($i = 0; $i < sizeof($lista); $i++) {
 								echo "<div class='col mb-3'>";
@@ -83,11 +83,11 @@
 								echo "<div class='card-body'>";
 								echo "<h5 class='card-title'>{$lista[$i]->getNome()}</h5>";
 								echo "<ul class='list-group list-group-flush'>";
-								echo "<li class='list-group-item'><span class='fw-bold'>Matricula: </span>{$lista[$i]->getMatricula()}</li>";
-								echo "<li class='list-group-item'><span class='fw-bold'>Email: </span>{$lista[$i]->getEmail()}</li>";
+								echo "<li class='list-group-item'><span class='fw-bold'>ID: </span>{$lista[$i]->getId()}</li>";
+								echo "<li class='list-group-item'><span class='fw-bold'>Coordenador: </span>{$lista[$i]->getCoordenador()}</li>";
 								echo "<div class='d-flex justify-content-around'>";
-								echo "<td><a href='editarAluno.php?matricula={$lista[$i]->getMatricula()}' class='btn btn-warning btn-sm'><i class='bi bi-pen'></i></a></td>";
-								echo "<td><button data-ref='rAluno.php?matricula={$lista[$i]->getMatricula()}' type='button' class='btn btn-danger btn-sm'><i class='bi bi-trash'></i></button></td>";
+								echo "<td><a href='editarAluno.php?id={$lista[$i]->getId()}' class='btn btn-warning btn-sm'><i class='bi bi-pen'></i></a></td>";
+								echo "<td><button data-ref='rAluno.php?id={$lista[$i]->getId()}' type='button' class='btn btn-danger btn-sm'><i class='bi bi-trash'></i></button></td>";
 								echo "</div>";
 								echo "</ul>";
 								echo "</div>";
@@ -100,27 +100,27 @@
 				</div>
 				<div class="d-none d-sm-block table-responsive-sm">
 					<table class="table table-hover">
-					<thead>
-						<tr class="table-dark">
-							<th>Matricula</th>
-							<th>Aluno</th>
-							<th>Email</th>
-							<th>Editar</th>
-							<th>Remover</th>
-						</tr>
+						<thead>
+							<tr class="table-dark">
+								<th>ID</th>
+								<th>Curso</th>
+								<th>Coordenador</th>
+								<th>Editar</th>
+								<th>Remover</th>
+							</tr>
 						</thead>
 						<tbody>
 						<?php
-							require_once("controle/ControleAluno.php");
-							$cont = new ControleAluno();
+							require_once("controle/ControleCurso.php");
+							$cont = new ControleCurso();
 							$lista = $cont->selecionarTodos();
 							for ($i = 0; $i < sizeof($lista); $i++) {
 								echo "<tr>";
-								echo "<td>{$lista[$i]->getMatricula()}</td>";
+								echo "<td>{$lista[$i]->getId()}</td>";
 								echo "<td>{$lista[$i]->getNome()}</td>";
-								echo "<td>{$lista[$i]->getEmail()}</td>";
-								echo "<td><a href='editarAluno.php?matricula={$lista[$i]->getMatricula()}' class='btn btn-warning btn-sm'><i class='bi bi-pen'></i></a></td>";
-								echo "<td><button data-ref='rAluno.php?matricula={$lista[$i]->getMatricula()}' type='button' class='btn btn-danger btn-sm'><i class='bi bi-trash'></i></button></td>";
+								echo "<td>{$lista[$i]->getCoordenador()}</td>";
+								echo "<td><a href='editarCurso.php?id={$lista[$i]->getId()}' class='btn btn-warning btn-sm'><i class='bi bi-pen'></i></a></td>";
+								echo "<td><button data-ref='rCurso.php?id={$lista[$i]->getId()}' type='button' class='btn btn-danger btn-sm'><i class='bi bi-trash'></i></button></td>";
 								echo "</tr>";
 							}
 						?>

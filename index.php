@@ -31,6 +31,15 @@
 										</ul>
 									</li>
 									<li class="nav-item dropdown">
+										<a href="#" class="nav-link" role="button" id="dropCurso" data-bs-toggle="dropdown" aria-expanded="false">Curso</a>
+										<ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropCurso">
+											<li><a href="listarCurso.php" class="dropdown-item" >Lista</a></li>
+											<li><a href="cadastrarCurso.php" class="dropdown-item">Cadastrar</a></li>
+											<li><a href="editarCurso.php" class="dropdown-item">Editar</a></li>
+											<li><a href="removerCurso.php" class="dropdown-item">Remover</a></li>
+										</ul>
+									</li>
+									<li class="nav-item dropdown">
 										<a href="#" class="nav-link active" aria-current="page" role="button" id="dropRelacionamento" data-bs-toggle="dropdown" aria-expanded="false">Relacionamento</a>
 										<ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropRelacionamento">
 											<li><a href="index.php" class="dropdown-item active" aria-current="page">Lista</a></li>

@@ -105,7 +105,7 @@
                         </select>
                     </div>
                     <div class="mt-3">
-                        <input type="submit" class="btn btn-warning" value="Editar" required>
+                        <input type="submit" class="btn btn-warning" value="Editar">
                     </div>
                 </form>
             </div>
