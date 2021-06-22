@@ -23,12 +23,28 @@ class Ajax {
 	}
 
 	requisitar(arquivo, elemento) {
-		alertify.error("Erro no serv");
 		if (this.ajax) {
 			this.ajax.onreadystatechange = function() {
 				if (this.readyState == 4) {
 					if (this.status == 200 || this.status == 304) {
 						elemento.innerHTML = this.responseText;
+					} else {
+						alertify.error("Erro no servidor");
+					}
+				}
+			};
+			this.ajax.open("GET", arquivo);
+			this.ajax.send(null);
+		}
+	}
+
+	requisitarRemoção(arquivo, linha) {
+		if (this.ajax) {
+			this.ajax.onreadystatechange = function() {
+				if (this.readyState == 4) {
+					if (this.status == 200 || this.status == 304) {
+						eval(this.responseText);
+						linha.remove();
 					} else {
 						alertify.error("Erro no servidor");
 					}

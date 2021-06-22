@@ -5,9 +5,12 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+		<link rel="stylesheet" href="css/lib/alertify.min.css">
+		<link rel="stylesheet" href="css/lib/default.min.css">
 		<title>Página Inicial</title>
 	</head>
 	<body>
+	<script src="js/lib/alertify.min.js"></script>
 		<header>
 			<div class="navbar navbar-expand-sm navbar-dark bg-dark">
 				<div class="container-fluid">
@@ -77,15 +80,18 @@
 							echo "<td>{$lista[$i]->getCurso()->getNome()}</td>";
 							echo "<td>{$lista[$i]->getCurso()->getCoordenador()}</td>";
 							echo "<td>{$lista[$i]->getTurma()}</td>";
-							echo "<td><a id='btnEditar' href='editarRelacionamento.php?id={$lista[$i]->getID()}' class='btn btn-warning btn-sm'><i class='bi bi-pen'></i></a></td>";
-							echo "<td><button id='btnRemover' type='button' class='btn btn-danger btn-sm'><i class='bi bi-trash'></i></button></td>";
+							echo "<td><a href='editarRelacionamento.php?id={$lista[$i]->getID()}' class='btn btn-warning btn-sm'><i class='bi bi-pen'></i></a></td>";
+							echo "<td><button data-ref='rRelacionamento.php?id={$lista[$i]->getId()}' type='button' class='btn btn-danger btn-sm'><i class='bi bi-trash'></i></button></td>";
 							echo "</tr>";
 						}
 					?>
 					</tbody>
 			</table>
 			</div>
-		</main>
-		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+	</main>
+	<script id="response-alert"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+	<script src="js/Ajax.js"></script>
+	<script src="js/app.js"></script>
 	</body>
 </html>

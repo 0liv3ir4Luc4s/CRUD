@@ -65,15 +65,18 @@
 			try {
 				$con = new Conexao("controle/configs.ini");
 				$retorno = false;
-				if ($con->getPDO()->exec("DELETE FROM relacionamento WHERE id={$id};") > 0)
+				if ($con->getPDO()->exec("DELETE FROM relacionamento WHERE id={$id};") > 0) {
 					$retorno = true;
+				}
 			} catch (PDOException $PDOex) {
-				$erro = "";
-			} catch (Exception $ex) {
-				$erro = "";
-			} finally {
 				echo "<script>";
+				echo "alertify.error('Erro no banco de dados ao remover relacionamento');";
 				echo "</script>";
+			} catch (Exception $ex) {
+				echo "<script>";
+				echo "alertify.error('Erro geral ao remover relacionamento');";
+				echo "</script>";
+			} finally {
 				$con->fecharConexao();
 				return $retorno;
 			}
@@ -145,13 +148,14 @@
 					}
 				}
 			} catch (PDOException $PDOEx) {
-				$erro = "Erro no banco de dados ao listar";
-			} catch (Exception $ex) {
-				$erro = "Erro geral ao listar";
-			} finally {
 				echo "<script>";
-				echo "alertify.error({$erro});";
+				echo "alertify.error('Erro no banco de dados ao listar');";
 				echo "</script>";
+			} catch (Exception $ex) {
+				echo "<script>";
+				echo "alertify.error('Erro geral ao listar');";
+				echo "</script>";
+			} finally {
 				$con->fecharConexao();
 				return $retorno;
 			}
