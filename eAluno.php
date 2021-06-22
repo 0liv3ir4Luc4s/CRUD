@@ -7,16 +7,16 @@
 		$controle = new ControleAluno();	
 		if ($controle->editar($aluno, intval($_POST["matricula"]))) {
 			echo "<script>";
-			echo "alertify.success('Operação bem sucedida');";
+			echo "console.log('Operação bem sucedida');";
 			echo "</script>";
             header("Location: http://localhost/av_php/editarAluno.php");
 		} else {
 			echo "<script>";
-			echo "alertify.error('Erro na operação');";
+			echo "console.error('Erro na operação');";
 			echo "</script>";
 		}
 	} else {
 		echo "<script>";
-		echo "alertify.error('Não deixe campos em branco!');";
+		echo "console.error('Não deixe campos em branco!');";
 		echo "</script>";
 	}	

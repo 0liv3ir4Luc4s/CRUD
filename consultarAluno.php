@@ -1,32 +1,21 @@
 <?php
 	require_once("controle/ControleAluno.php");
-	if (!empty($_GET["matricula"])) {
+	if (!empty($_GET["id"])) {
 		$controle = new ControleAluno();	
-		$aluno = $controle->selecionarUm(1);
+		$aluno = $controle->selecionarUm($_GET['id']);
 		if (!empty($aluno)) {
-			echo "<table>";
-				echo "<thead>";
-					echo "<tr>";
-						echo "<th>Matricula</th>";
-						echo "<th>Nome</th>";
-						echo "<th>Email</th>";
-					echo "</tr>";
-				echo "</thead>"; 
-				echo "<tbody>";
-					echo "<tr>";
-						echo "<td>{$aluno->getMatricula()}</td>";	
-						echo "<td>{$aluno->getNome()}</td>";
-						echo "<td>{$aluno->getEmail()}</td>";
-					echo "</tr>";
-				echo "</tbody>";
-			echo "</table>";
+			echo "<tr>";
+				echo "<td id='matricula'>{$aluno->getMatricula()}</td>";	
+				echo "<td id='nome'>{$aluno->getNome()}</td>";
+				echo "<td id='email'>{$aluno->getEmail()}</td>";
+			echo "</tr>";
 		} else {
 			echo "<script>";
-			echo "alertify.error('Usuário não cadastrado');";
+			echo "console.error('Usuário não cadastrado');";
 			echo "</script>";
 		}
 	} else {
 		echo "<script>";
-		echo "alertify.error('Não deixe campos em branco!');";
+		echo "console.error('Não deixe campos em branco!');";
 		echo "</script>";
 	}	

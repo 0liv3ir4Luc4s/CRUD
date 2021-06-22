@@ -14,7 +14,7 @@ remover.forEach(item => {
 if (consultar != null) {
     consultar.onclick = ev => {
         ev.preventDefault();
-        ajax.requisitar("http://localhost/av_php/" + ev.target.dataset.ref + "?id=" + document.getElementById("consulta_id").value, document.getElementById("consulta"));
+        ajax.requisitar("http://localhost/av_php/" + (ev.target.dataset.ref || ev.target.parentElement.dataset.ref) + "?id=" + document.getElementById("consulta_id").value, document.getElementById("consulta"));
     }
 }
 

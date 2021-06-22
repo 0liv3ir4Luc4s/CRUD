@@ -22,7 +22,7 @@ class Ajax {
 		return this.ajax;
 	}
 
-	requisitar(arquivo, elemento, form) {
+	requisitar(arquivo, elemento) {
 		if (this.ajax) {
 			this.ajax.onreadystatechange = function() {
 				if (this.readyState == 4) {
