@@ -10,12 +10,12 @@
 				echo "<td id='coordenador'>{$curso->getCoordenador()}</td>";
 			echo "</tr>";
 		} else {
-			echo "<script>";
-			echo "curso.error('Curso não cadastrado');";
-			echo "</script>";
+			echo "<tr>";
+			echo "<td>Curso não cadastrado</td>";
+			echo "</tr>";
 		}
 	} else {
-		echo "<script>";
-		echo "curso.error('Não deixe campos em branco!');";
-		echo "</script>";
+		echo "<tr>";
+		echo "<td>Não deixe campos em branco!</td>";
+		echo "</tr>";
 	}	

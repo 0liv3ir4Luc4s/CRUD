@@ -7,7 +7,7 @@
 		$controle = new ControleCurso();	
 		if ($controle->cadastrar($curso)) {
 			echo "<script>";
-			echo "console.success('Operação bem sucedida');";
+			echo "console.log('Operação bem sucedida');";
 			echo "</script>";
             header("Location: http://localhost/av_php/cadastrarCurso.php");
 		} else {

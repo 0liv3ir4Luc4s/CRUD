@@ -10,12 +10,12 @@
 				echo "<td id='email'>{$aluno->getEmail()}</td>";
 			echo "</tr>";
 		} else {
-			echo "<script>";
-			echo "console.error('Usuário não cadastrado');";
-			echo "</script>";
+			echo "<tr>";
+			echo "<td>Usuário não cadastrado</td>";
+			echo "</tr>";
 		}
 	} else {
-		echo "<script>";
-		echo "console.error('Não deixe campos em branco!');";
-		echo "</script>";
+		echo "<tr>";
+		echo "<td>Não deixe campos em branco!</td>";
+		echo "</tr>";
 	}	
