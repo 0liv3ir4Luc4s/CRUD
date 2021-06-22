@@ -40,10 +40,19 @@
 										</ul>
 									</li>
 									<li class="nav-item dropdown">
+										<a href="#" class="nav-link" role="button" id="dropTurma" data-bs-toggle="dropdown" aria-expanded="false">Turma</a>
+										<ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropTurma">
+											<li><a href="listarTurma.php" class="dropdown-item">Lista</a></li>
+											<li><a href="cadastrarTurma.php" class="dropdown-item">Cadastrar</a></li>
+											<li><a href="editarTurma.php" class="dropdown-item">Editar</a></li>
+											<li><a href="removerTurma.php" class="dropdown-item">Remover</a></li>
+										</ul>
+									</li>
+									<li class="nav-item dropdown">
 										<a href="#" class="nav-link active" aria-current="page" role="button" id="dropRelacionamento" data-bs-toggle="dropdown" aria-expanded="false">Relacionamento</a>
 										<ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropRelacionamento">
 											<li><a href="index.php" class="dropdown-item active" aria-current="page">Lista</a></li>
-											<li><a href="cadastraRrelacionamento.php" class="dropdown-item">Cadastrar</a></li>
+											<li><a href="cadastrarRelacionamento.php" class="dropdown-item">Cadastrar</a></li>
 											<li><a href="editarRelacionamento.php" class="dropdown-item">Editar</a></li>
 											<li><a href="removerRelacionamento.php" class="dropdown-item">Remover</a></li>
 										</ul>

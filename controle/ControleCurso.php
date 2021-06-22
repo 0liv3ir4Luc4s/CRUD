@@ -19,11 +19,11 @@
 				}
 			} catch (PDOException $PDOex) {
 				echo "<script>";
-				echo "console.error('Erro no banco de dados ao editar relacionamento');";
+				echo "console.error('Erro no banco de dados ao editar curso');";
 				echo "</script>";		
 			} catch (Exception $ex) {
 				echo "<script>";
-				echo "console.error('Erro geral ao editar relacionamento');";
+				echo "console.error('Erro geral ao editar curso');";
 				echo "</script>";
 			} finally {
 				$con->fecharConexao();

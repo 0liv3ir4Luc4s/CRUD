@@ -2,29 +2,19 @@
 	require_once("controle/ControleTurma.php");
 	if (!empty($_GET["id"])) {
 		$controle = new ControleTurma();	
-		$turma = $controle->selecionarUm(intval($_POST["id"]));
+		$turma = $controle->selecionarUm(intval($_GET["id"]));
 		if (!empty($turma)) {
-			echo "<table>";
-				echo "<thead>";
-					echo "<tr>";
-						echo "<th>ID</th>";
-						echo "<th>Serie</th>";
-					echo "</tr>";
-				echo "</thead>"; 
-				echo "<tbody>";
-					echo "<tr>";
-						echo "<td>{$turma->getId()}</td>";	
-						echo "<td>{$turma->getSerie()}</td>";
-					echo "</tr>";
-				echo "</tbody>";
-			echo "</table>";
+			echo "<tr>";
+				echo "<td id='id_turma'>{$turma->getId()}</td>";	
+				echo "<td id='serie'>{$turma->getSerie()}</td>";
+			echo "</tr>";
 		} else {
 			echo "<script>";
-			echo "alertify.error('Turma não cadastrada');";
+			echo "console.error('Turma não cadastrada');";
 			echo "</script>";
 		}
 	} else {
 		echo "<script>";
-		echo "alertify.error('Não deixe campos em branco!');";
+		echo "console.error('Não deixe campos em branco!');";
 		echo "</script>";
 	}	

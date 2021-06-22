@@ -6,16 +6,18 @@
 		$controle = new ControleTurma();	
 		if ($controle->editar($turma, intval($_POST["id"]))) {
 			echo "<script>";
-			echo "alertify.success('Operação bem sucedida');";
+			echo "console.log('Operação bem sucedida');";
 			echo "</script>";
             header("Location: http://localhost/av_php/editarTurma.php");
 		} else {
 			echo "<script>";
-			echo "alertify.error('Erro na operação');";
+			echo "console.error('Erro na operação');";
 			echo "</script>";
+			header("Location: http://localhost/av_php/editarTurma.php");
 		}
 	} else {
 		echo "<script>";
-		echo "alertify.error('Não deixe campos em branco!');";
+		echo "console.error('Não deixe campos em branco!');";
 		echo "</script>";
+		header("Location: http://localhost/av_php/editarTurma.php");
 	}	

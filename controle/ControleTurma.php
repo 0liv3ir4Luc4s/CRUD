@@ -12,15 +12,18 @@
 				$serie = $turma->getSerie();
 				$comando->bindParam("s", $serie);
 				$retorno = false;
-				if ($comando->execute())
+				if ($comando->execute()) {
 					$retorno = true;
+				}
 			} catch (PDOException $PDOex) {
-				$erro = "";
-			} catch (Exception $ex) {
-				$erro = "";
-			} finally {
 				echo "<script>";
+				echo "console.error('Erro no banco de dados ao cadastrar turma');";
+				echo "</script>";		
+			} catch (Exception $ex) {
+				echo "<script>";
+				echo "console.error('Erro geral ao cadastrar turma');";
 				echo "</script>";
+			} finally {
 				$con->fecharConexao();
 				return $retorno;
 			}
@@ -35,15 +38,18 @@
 				$comando->bindParam("s", $serie);
 				$comando->bindParam("i", $id);
 				$retorno = false;
-				if ($comando->execute())
+				if ($comando->execute()) {
 					$retorno = true;
+				}
 			} catch (PDOException $PDOex) {
-				$erro = "";
-			} catch (Exception $ex) {
-				$erro = "";
-			} finally {
 				echo "<script>";
+				echo "console.error('Erro no banco de dados ao editar turma');";
 				echo "</script>";
+			} catch (Exception $ex) {
+				echo "<script>";
+				echo "console.error('Erro geral ao editar turma');";
+				echo "</script>";
+			} finally {
 				$con->fecharConexao();
 				return $retorno;
 			}
@@ -54,15 +60,18 @@
 			try {
 				$con = new Conexao("controle/configs.ini");
 				$retorno = false;
-				if ($con->getPDO()->exec("DELETE FROM turma WHERE id={$id};") > 0)
+				if ($con->getPDO()->exec("DELETE FROM turma WHERE id={$id};") > 0) {
 					$retorno = true;
+				}
 			} catch (PDOException $PDOex) {
-				$erro = "";
-			} catch (Exception $ex) {
-				$erro = "";
-			} finally {
 				echo "<script>";
+				echo "console.error('Erro no banco de dados ao remover turma');";
 				echo "</script>";
+			} catch (Exception $ex) {
+				echo "<script>";
+				echo "console.error('Erro geral ao remover turma');";
+				echo "</script>";
+			} finally {
 				$con->fecharConexao();
 				return $retorno;
 			}
@@ -78,15 +87,17 @@
 					$turma = $comando->fetchAll(PDO::FETCH_CLASS, "Turma");
 					$retorno = new Turma();
 					$retorno->setId($turma[0]->getId());
-					$retorno->setSerie($serie[0]->getSerie());
+					$retorno->setSerie($turma[0]->getSerie());
 				}
 			} catch (PDOException $PDOex) {
-				$erro = "";
-			} catch (Exception $ex) {
-				$erro = "";
-			} finally {
 				echo "<script>";
+				echo "console.error('Erro no banco de dados ao selecionar turma');";
 				echo "</script>";
+			} catch (Exception $ex) {
+				echo "<script>";
+				echo "console.error('Erro geral ao selecionar turma');";
+				echo "</script>";
+			} finally {
 				$con->fecharConexao();
 				return $retorno;
 			}
@@ -101,13 +112,15 @@
 				if ($comando->execute()) {
 					$retorno = $comando->fetchAll(PDO::FETCH_CLASS, "Turma");
 				}
-			} catch (PDOException $PDOEx) {
-				$erro = "";
-			} catch (Exception $ex) {
-				$erro = "";
-			} finally {
+			} catch (PDOException $PDOex) {
 				echo "<script>";
+				echo "console.error('Erro geral ao listar turma');";
 				echo "</script>";
+			} catch (Exception $ex) {
+				echo "<script>";
+				echo "console.error('Erro geral ao listar turma');";
+				echo "</script>";
+			} finally {
 				$con->fecharConexao();
 				return $retorno;
 			}

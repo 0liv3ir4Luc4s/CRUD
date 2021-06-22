@@ -20,7 +20,7 @@
 						</button>
 						<div class="collapse navbar-collapse flex-grow-0" id="navbar-responsiva">	
 							<nav>
-								<ul class="navbar-nav">
+							<ul class="navbar-nav">
                                     <li class="nav-item dropdown">
 										<a href="#" class="nav-link" role="button" id="dropAluno" data-bs-toggle="dropdown" aria-expanded="false">Aluno</a>
 										<ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropAluno">
@@ -37,6 +37,15 @@
 											<li><a href="cadastrarCurso.php" class="dropdown-item">Cadastrar</a></li>
 											<li><a href="editarCurso.php" class="dropdown-item">Editar</a></li>
 											<li><a href="removerCurso.php" class="dropdown-item active" aria-current="page">Remover</a></li>
+										</ul>
+									</li>
+                                    <li class="nav-item dropdown">
+										<a href="#" class="nav-link" role="button" id="dropTurma" data-bs-toggle="dropdown" aria-expanded="false">Turma</a>
+										<ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropTurma">
+											<li><a href="listarTurma.php" class="dropdown-item">Lista</a></li>
+											<li><a href="cadastrarTurma.php" class="dropdown-item">Cadastrar</a></li>
+											<li><a href="editarTurma.php" class="dropdown-item">Editar</a></li>
+											<li><a href="removerTurma.php" class="dropdown-item">Remover</a></li>
 										</ul>
 									</li>
 									<li class="nav-item dropdown">

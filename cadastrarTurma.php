@@ -7,7 +7,7 @@
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 		<link rel="stylesheet" href="css/lib/alertify.min.css">
 		<link rel="stylesheet" href="css/lib/default.min.css">
-		<title>Remover Curso</title>
+		<title>Cadastrar Turma</title>
 	</head>
 	<body>
 		<script src="js/lib/alertify.min.js"></script>
@@ -31,19 +31,19 @@
 										</ul>
 									</li>
                                     <li class="nav-item dropdown">
-										<a href="#" class="nav-link active" aria-current="page" role="button" id="dropCurso" data-bs-toggle="dropdown" aria-expanded="false">Curso</a>
+										<a href="#" class="nav-link" role="button" id="dropCurso" data-bs-toggle="dropdown" aria-expanded="false">Curso</a>
 										<ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropCurso">
 											<li><a href="listarCurso.php" class="dropdown-item">Lista</a></li>
 											<li><a href="cadastrarCurso.php" class="dropdown-item">Cadastrar</a></li>
-											<li><a href="editarCurso.php" class="dropdown-item active" aria-current="page">Editar</a></li>
+											<li><a href="editarCurso.php" class="dropdown-item">Editar</a></li>
 											<li><a href="removerCurso.php" class="dropdown-item">Remover</a></li>
 										</ul>
 									</li>
                                     <li class="nav-item dropdown">
-										<a href="#" class="nav-link" role="button" id="dropTurma" data-bs-toggle="dropdown" aria-expanded="false">Turma</a>
+										<a href="#" class="nav-link active" aria-current="page" role="button" id="dropTurma" data-bs-toggle="dropdown" aria-expanded="false">Turma</a>
 										<ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropTurma">
 											<li><a href="listarTurma.php" class="dropdown-item">Lista</a></li>
-											<li><a href="cadastrarTurma.php" class="dropdown-item">Cadastrar</a></li>
+											<li><a href="cadastrarTurma.php" class="dropdown-item active" aria-current="page">Cadastrar</a></li>
 											<li><a href="editarTurma.php" class="dropdown-item">Editar</a></li>
 											<li><a href="removerTurma.php" class="dropdown-item">Remover</a></li>
 										</ul>
@@ -64,47 +64,17 @@
 				</div>
 			</header>
             <main class="container-fluid">
-                <a href="listarCurso.php" class="btn btn-secondary my-3"><i class="bi bi-arrow-return-left"></i> Voltar</a>
+                <a href="listarTurma.php" class="btn btn-secondary my-3"><i class="bi bi-arrow-return-left"></i> Voltar</a>
                 <div class="row justify-content-center">
                     <div class="col-auto">
-                        <h2>Editar Curso</h2>
-                        <form class="needs-validation" method="POST" action="eCurso.php" novalidate>
-                            <div class="pb-3 mb-2 border-bottom">
-                                <label for="consulta_id" class="form-label">Pesquisar curso por ID:</label>
-                                <div class="input-group">
-                                    <input id="consulta_id" class="form-control" type="text" <?php if(isset($_GET['id'])) { echo "value={$_GET['id']}"; }?>>                  
-                                    <button id="btnConsultar" data-ref="consultarCurso.php" class="btn btn-warning" type="button"><i class="bi bi-search"></i></button>
-                                </div>
-                                <div id="tabela" class="d-none">
-                                    <div class="table-responsive-sm mt-2">
-                                        <table class="table table-hover">
-                                            <thead>
-							                    <tr class="table-dark">
-								                    <th>ID</th>
-								                    <th>Curso</th>
-								                    <th>Coordenador</th>
-							                    </tr>
-						                    </thead>
-                                            <tbody id="consulta">
-                                            </tbody>
-                                        </table> 
-                                    </div>
-                                </div>
-                            </div>
+                        <h2>Cadastrar Turma</h2>
+                        <form class="needs-validation" method="POST" action="cTurma.php" novalidate> 
                             <div>
-                                <label for="id" class="form-label">ID do Curso:</label>
-                                <input id="id" class="form-control" type="text" name="id" required>
-                            </div>
-                            <div>
-                                <label for="nome" class="form-label">Nome:</label>
-                                <input id="nome" class="form-control" type="text" name="nome" required>
-                            </div>
-                            <div>
-                                <label for="coordenador" class="form-label">Coordenador:</label>
-                                <input id="coordenador" class="form-control" type="text" name="coordenador" required>
+                                <label for="serie" class="form-label">Serie:</label>
+                                <input id="serie" class="form-control" type="number" name="serie" required>
                             </div>
                             <div class="mt-3">
-                                <input type="submit" class="btn btn-warning" value="Editar">
+                                <input type="submit" class="btn btn-success" value="Cadastrar">
                             </div>
                         </form>
                     </div>
