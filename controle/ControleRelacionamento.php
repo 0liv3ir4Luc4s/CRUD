@@ -19,15 +19,18 @@
 				$curso = $relacionamento->getCurso();
 				$comando->bindParam("c", $curso);
 				$retorno = false;
-				if ($comando->execute())
+				if ($comando->execute()) {
 					$retorno = true;
+				}
 			} catch (PDOException $PDOex) {
-				$erro = "";
-			} catch (Exception $ex) {
-				$erro = "";
-			} finally {
 				echo "<script>";
+				echo "alertify.error('Erro no banco de dados ao cadastrar relacionamento');";
 				echo "</script>";
+			} catch (Exception $ex) {
+				echo "<script>";
+				echo "alertify.error('Erro geral ao cadastrar relacionamento');";
+				echo "</script>";
+			} finally {
 				$con->fecharConexao();
 				return $retorno;
 			}
