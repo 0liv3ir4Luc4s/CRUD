@@ -14,12 +14,6 @@ consultar.onclick = ev => {
     ev.preventDefault();
     ajax.requisitar("http://localhost/av_php/" + ev.target.dataset.ref + "?id=" + document.getElementById("consulta_id").value, document.getElementById("consulta"));
 }
-/*document.getElementById("consulta").onchange = ev => {
-    document.getElementById("matricula").value = document.getElementById("matricula_al").innerHTML;
-						document.getElementById("id_curso").value = document.getElementById("id_curso").innerHTML;
-						document.getElementById("id_turma").value = document.getElementById("id_turma").innerHTML;
-
-}*/
 var forms = document.querySelectorAll('.needs-validation')
 
   // Loop over them and prevent submission

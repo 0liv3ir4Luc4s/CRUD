@@ -33,11 +33,7 @@ class Ajax {
 						let valuesConsulta = document.querySelectorAll("td[id]");
 						let inputs = document.querySelectorAll("input[name],select");				
 						for (let i = 0 ; i < valuesConsulta.length; i++) {
-							if (inputs[i].nodeName == "SELECT") {
 								inputs[i].value = valuesConsulta[i].innerHTML;
-							} else {
-								inputs[i].value = valuesConsulta[i].innerHTML;
-							}
 						}
 					} else {
 						alertify.error("Erro no servidor");
@@ -55,7 +51,11 @@ class Ajax {
 				if (this.readyState == 4) {
 					if (this.status == 200 || this.status == 304) {
 						eval(this.responseText);
-						linha.remove();
+						if (linha.parentElement.parentElement.getAttribute("class") == "card"){
+							linha.parentElement.parentElement.parentElement.remove();
+						} else {
+							linha.remove();
+						}
 					} else {
 						alertify.error("Erro no servidor");
 					}

@@ -45,7 +45,7 @@
 							<a href="removerRelacionamento.php" class="btn btn-danger btn-lg"><i class="bi bi-trash"></i></i></a>
 						</div>
 					</div>
-					<div class="d-none d-sm-block ">
+					<div class="d-none d-sm-block">
 						<div class="d-flex gap-3 my-3">
 							<a href="cadastrarRelacionamento.php" class="btn btn-success">Cadastrar</a>
 							<a href="editarRelacionamento.php" class="btn btn-warning">Editar</a>
@@ -53,7 +53,37 @@
 						</div>
 					</div>
 				</div>
-				<div class="table-responsive-sm">
+				<div class="d-flex flex-wrap d-sm-none">
+					<div class="row row-cols-2">
+						<?php
+							require_once("controle/ControleRelacionamento.php");
+							$cont = new ControleRelacionamento();
+							$lista = $cont->selecionarTodos();
+							for ($i = 0; $i < sizeof($lista); $i++) {
+								echo "<div class='col mb-3'>";
+								echo "<div class='card'>";
+								echo "<div class='card-body'>";
+								echo "<h5 class='card-title'>{$lista[$i]->getAluno()->getNome()}</h5>";
+								echo "<ul class='list-group list-group-flush'>";
+								echo "<li class='list-group-item'><span class='fw-bold'>ID: </span>{$lista[$i]->getId()}</li>";
+								echo "<li class='list-group-item'><span class='fw-bold'>Matricula: </span>{$lista[$i]->getAluno()->getEmail()}</li>";
+								echo "<li class='list-group-item'><span class='fw-bold'>Curso: </span>{$lista[$i]->getCurso()->getNome()}</li>";
+								echo "<li class='list-group-item'><span class='fw-bold'>Coordenador: </span>{$lista[$i]->getCurso()->getCoordenador()}</li>";
+								echo "<li class='list-group-item'><span class='fw-bold'>Serie: </span>{$lista[$i]->getTurma()}</li>";
+								echo "<div class='d-flex justify-content-around'>";
+								echo "<td><a href='editarRelacionamento.php?id={$lista[$i]->getID()}' class='btn btn-warning btn-sm'><i class='bi bi-pen'></i></a></td>";
+								echo "<td><button data-ref='rRelacionamento.php?id={$lista[$i]->getId()}' type='button' class='btn btn-danger btn-sm'><i class='bi bi-trash'></i></button></td>";
+								echo "</div>";
+								echo "</ul>";
+								echo "</div>";
+								echo "</div>";
+								echo "</div>";
+							}
+						?>	
+					</div>
+					
+				</div>
+				<div class="d-none d-sm-block table-responsive-sm">
 					<table class="table table-hover">
 					<thead>
 						<tr class="table-dark">
@@ -62,7 +92,7 @@
 							<th>Email</th>
 							<th>Curso</th>
 							<th>Coordenador</th>
-							<th>Turma</th>
+							<th>Serie</th>
 							<th>Editar</th>
 							<th>Remover</th>
 						</tr>

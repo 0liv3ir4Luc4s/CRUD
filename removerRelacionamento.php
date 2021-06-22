@@ -26,8 +26,8 @@
                                 <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropRelacionamento">
                                     <li><a href="index.php" class="dropdown-item">Lista</a></li>
                                     <li><a href="cadastraRrelacionamento.php" class="dropdown-item">Cadastrar</a></li>
-                                    <li><a href="editarRelacionamento.php" class="dropdown-item active" aria-current="page">Editar</a></li>
-                                    <li><a href="removerRelacionamento.php" class="dropdown-item">Remover</a></li>
+                                    <li><a href="editarRelacionamento.php" class="dropdown-item">Editar</a></li>
+                                    <li><a href="removerRelacionamento.php" class="dropdown-item active" aria-current="page">Remover</a></li>
                                 </ul>
                             </li>	
                         </ul>

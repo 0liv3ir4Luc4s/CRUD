@@ -8,10 +8,17 @@
 		$rel->setCurso(intval($_POST["curso"]));
 		$controle = new ControleRelacionamento();	
 		if ($controle->cadastrar($rel)) {
+			echo "<script>console.log('Operação bem sucedida');</script>";
 			header("Location: http://localhost/av_php/cadastrarRelacionamento.php");
 		} else {
+			echo "<script>";
+			echo "console.error('Erro na operação');";
+			echo "</script>";
 			header("Location: http://localhost/av_php/cadastrarRelacionamento.php");
 		}
 	} else {
+		echo "<script>";
+		echo "console.error('Não deixe campos em branco!');";
+		echo "</script>";
 		header("Location: http://localhost/av_php/cadastrarRelacionamento.php");
 	}	
