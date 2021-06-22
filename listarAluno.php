@@ -31,7 +31,7 @@
 										</ul>
 									</li>
 									<li class="nav-item dropdown">
-										<a href="#" class="nav-link" role="button" id="dropAluno" data-bs-toggle="dropdown" aria-expanded="false">Aluno</a>
+										<a href="#" class="nav-link" role="button" id="dropAluno" data-bs-toggle="dropdown" aria-expanded="false">Relacionamento</a>
 										<ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropAluno">
 											<li><a href="index.php" class="dropdown-item">Lista</a></li>
 											<li><a href="cadastrarRelacionamento.php" class="dropdown-item">Cadastrar</a></li>

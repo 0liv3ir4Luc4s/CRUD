@@ -53,6 +53,8 @@ class Ajax {
 						eval(this.responseText);
 						if (linha.parentElement.parentElement.getAttribute("class") == "card"){
 							linha.parentElement.parentElement.parentElement.remove();
+						} else if (linha.nodeName == "TD") {
+							linha.parentElement.remove();
 						} else {
 							linha.remove();
 						}

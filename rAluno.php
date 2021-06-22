@@ -24,7 +24,7 @@
 		}
 	} else {
 		if (isset($_GET['matricula'])) {
-			echo "console.error('Não deixe campos em branco!');";
+			echo "alertify.error('Não deixe campos em branco!');";
 		} else {
 			echo "<script>";
 			echo "console.error('Não deixe campos em branco!');";
