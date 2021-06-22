@@ -16,15 +16,18 @@
 				$comando->bindParam("n", $nome);
 				$comando->bindParam("e", $email);
 				$retorno = false;
-				if ($comando->execute())
+				if ($comando->execute()) {
 					$retorno = true;
+				}
 			} catch (PDOException $PDOex) {
-				$erro = "";
-			} catch (Exception $ex) {
-				$erro = "";
-			} finally {
 				echo "<script>";
+				echo "console.error('Erro no banco de dados ao cadastrar aluno');";
 				echo "</script>";
+			} catch (Exception $ex) {
+				echo "<script>";
+				echo "console.error('Erro geral ao cadastrar relacionamento');";
+				echo "</script>";
+			} finally {
 				$con->fecharConexao();
 				return $retorno;
 			}
@@ -41,15 +44,18 @@
 				$comando->bindParam("e", $email);
 				$comando->bindParam("m", $matricula);
 				$retorno = false;
-				if ($comando->execute())
+				if ($comando->execute()) {
 					$retorno = true;
+				}
 			} catch (PDOException $PDOex) {
-				$erro = "";
-			} catch (Exception $ex) {
-				$erro = "";
-			} finally {
 				echo "<script>";
+				echo "console.error('Erro no banco de dados ao editar relacionamento');";
 				echo "</script>";
+			} catch (Exception $ex) {
+				echo "<script>";
+				echo "console.error('Erro geral ao editar relacionamento');";
+				echo "</script>";
+			} finally {
 				$con->fecharConexao();
 				return $retorno;
 			}
@@ -60,15 +66,18 @@
 			try {
 				$con = new Conexao("controle/configs.ini");
 				$retorno = false;
-				if ($con->getPDO()->exec("DELETE FROM aluno WHERE matricula={$matricula};") > 0)
+				if ($con->getPDO()->exec("DELETE FROM aluno WHERE matricula={$matricula};") > 0) {
 					$retorno = true;
+				}
 			} catch (PDOException $PDOex) {
-				$erro = "";
-			} catch (Exception $ex) {
-				$erro = "";
-			} finally {
 				echo "<script>";
+				echo "console.error('Erro no banco de dados ao remover relacionamento');";
 				echo "</script>";
+			} catch (Exception $ex) {
+				echo "<script>";
+				echo "console.error('Erro geral ao remover relacionamento');";
+				echo "</script>";
+			} finally {
 				$con->fecharConexao();
 				return $retorno;
 			}
@@ -88,12 +97,14 @@
 					$retorno->setEmail($aluno[0]->getEmail());
 				}
 			} catch (PDOException $PDOex) {
-				$erro = "";
-			} catch (Exception $ex) {
-				$erro = "";
-			} finally {
 				echo "<script>";
+				echo "console.error('Erro geral ao selecionar relacionamento');";
 				echo "</script>";
+			} catch (Exception $ex) {
+				echo "<script>";
+				echo "console.error('Erro geral ao selecionar relacionamento');";
+				echo "</script>";
+			} finally {
 				$con->fecharConexao();
 				return $retorno;
 			}
@@ -109,12 +120,14 @@
 					$retorno = $comando->fetchAll(PDO::FETCH_CLASS, "Aluno");
 				}
 			} catch (PDOException $PDOEx) {
-				$erro = "";
-			} catch (Exception $ex) {
-				$erro = "";
-			} finally {
 				echo "<script>";
+				echo "console.error('Erro no banco de dados ao listar relacionamento');";
 				echo "</script>";
+			} catch (Exception $ex) {
+				echo "<script>";
+				echo "console.error('Erro geral ao listar relacionamento');";
+				echo "</script>";
+			} finally {
 				$con->fecharConexao();
 				return $retorno;
 			}

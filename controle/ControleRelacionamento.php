@@ -24,11 +24,11 @@
 				}
 			} catch (PDOException $PDOex) {
 				echo "<script>";
-				echo "alertify.error('Erro no banco de dados ao cadastrar relacionamento');";
+				echo "console.error('Erro no banco de dados ao cadastrar relacionamento');";
 				echo "</script>";
 			} catch (Exception $ex) {
 				echo "<script>";
-				echo "alertify.error('Erro geral ao cadastrar relacionamento');";
+				echo "console.error('Erro geral ao cadastrar relacionamento');";
 				echo "</script>";
 			} finally {
 				$con->fecharConexao();
@@ -52,12 +52,14 @@
 				if ($comando->execute())
 					$retorno = true;
 			} catch (PDOException $PDOex) {
-				$erro = "";
-			} catch (Exception $ex) {
-				$erro = "";
-			} finally {
 				echo "<script>";
+				echo "console.error('Erro no banco de dados ao editar relacionamento');";
 				echo "</script>";
+			} catch (Exception $ex) {
+				echo "<script>";
+				echo "console.error('Erro geral ao editar relacionamento');";
+				echo "</script>";
+			} finally {
 				$con->fecharConexao();
 				return $retorno;
 			}
@@ -159,11 +161,11 @@
 				}
 			} catch (PDOException $PDOEx) {
 				echo "<script>";
-				echo "alertify.error('Erro no banco de dados ao listar');";
+				echo "console.error('Erro no banco de dados ao listar relacionamento');";
 				echo "</script>";
 			} catch (Exception $ex) {
 				echo "<script>";
-				echo "alertify.error('Erro geral ao listar');";
+				echo "console.error('Erro geral ao listar relacionamento');";
 				echo "</script>";
 			} finally {
 				$con->fecharConexao();

@@ -18,6 +18,7 @@
 				echo "console.error('Erro na operação');";
 				echo "</script>";
 			}
+			header("Location: http://localhost/av_php/removerRelacionamento.php");
 		}
 	} else {
 		if (isset($_GET['id'])) {
@@ -27,5 +28,5 @@
 			echo "console.error('Não deixe campos em branco!');";
 			echo "</script>";
 		}
-		
+		header("Location: http://localhost/av_php/removerRelacionamento.php");
 	}	

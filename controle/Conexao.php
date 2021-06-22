@@ -31,7 +31,7 @@
 				}
 			} catch (PDOException $PDOEx) {
 				echo "<script>";
-				echo "alert('Erro')";
+				echo "console.error('Erro na conexão')";
 				echo "</script>";
 			}
 		}
