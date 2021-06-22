@@ -41,6 +41,14 @@
         <div class="row justify-content-center mb-5">
             <div class="col-auto">
                 <h2>Editar Relacionamento</h2>
+                <?php
+                    require_once("controle/ControleCurso.php");
+                    require_once("controle/ControleTurma.php");
+                    $cC = new ControleCurso();
+                    $cT = new ControleTurma();
+                    $cursos = $cC->selecionarTodos();
+                    $turmas = $cT->selecionarTodos();
+                ?>
                 <form class="needs-validation" method="POST" action="eRelacionamento.php" novalidate>
                     <div class="pb-3 mb-2 border-bottom">
                         <label for="consulta_id" class="form-label">Pesquisar relacionamento por ID:</label>
@@ -78,11 +86,23 @@
                     </div> 
                     <div>
                         <label for="id_curso" class="form-label">Curso:</label> 
-                        <input id="id_curso" type="number" name="curso" class="form-control" required>
+                        <select name="curso" class="form-select" id="">
+                            <?php
+                                foreach ($cursos as $curso) {
+                                    echo "<option value='{$curso->getId()}'>{$curso->getNome()} -- {$curso->getCoordenador()}</option>";
+                                }
+                            ?> 
+                        </select>
                     </div>
                     <div>
                         <label for="id_turma" class="form-label">Turma:</label> 
-                        <input id="id_turma" type="number" name="turma" class="form-control" required>
+                        <select name="turma" class="form-select" id="">
+                            <?php
+                                foreach ($turmas as $turma) {
+                                    echo "<option value='{$turma->getId()}'>{$turma->getSerie()}</option>";
+                                }
+                            ?> 
+                        </select>
                     </div>
                     <div class="mt-3">
                         <input type="submit" class="btn btn-warning" value="Editar" required>

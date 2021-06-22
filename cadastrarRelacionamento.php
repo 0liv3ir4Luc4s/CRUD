@@ -37,7 +37,15 @@
         <a href="index.php" class="btn btn-secondary my-3"><i class="bi bi-arrow-return-left"></i> Voltar</a>
         <div class="row justify-content-center">
             <div class="col-auto">
-                <h2>Editar Relacionamento</h2>
+                <h2>Cadastrar Relacionamento</h2>
+                <?php
+                    require_once("controle/ControleCurso.php");
+                    require_once("controle/ControleTurma.php");
+                    $cC = new ControleCurso();
+                    $cT = new ControleTurma();
+                    $cursos = $cC->selecionarTodos();
+                    $turmas = $cT->selecionarTodos();
+                ?>
                 <form class="needs-validation" method="POST" action="cRelacionamento.php" novalidate>
                     <div>
                         <label for="matricula" class="form-label">Matricula do Aluno:</label>
@@ -45,11 +53,23 @@
                     </div> 
                     <div>
                         <label for="id_curso" class="form-label">Curso:</label> 
-                        <input id="id_curso" type="number" name="curso" class="form-control" required>
+                        <select name="curso" class="form-select" id="">
+                            <?php
+                                foreach ($cursos as $curso) {
+                                    echo "<option value='{$curso->getId()}'>{$curso->getNome()} -- {$curso->getCoordenador()}</option>";
+                                }
+                            ?> 
+                        </select>
                     </div>
                     <div>
                         <label for="id_turma" class="form-label">Turma:</label> 
-                        <input id="id_turma" type="number" name="turma" class="form-control" required>
+                        <select name="turma" class="form-select" id="">
+                            <?php
+                                foreach ($turmas as $turma) {
+                                    echo "<option value='{$turma->getId()}'>{$turma->getSerie()}</option>";
+                                }
+                            ?> 
+                        </select>
                     </div>
                     <div class="mt-3">
                         <input type="submit" class="btn btn-success" value="Cadastrar" required>

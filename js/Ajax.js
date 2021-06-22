@@ -31,9 +31,13 @@ class Ajax {
 						document.getElementById("tabela").setAttribute("class", '');
 
 						let valuesConsulta = document.querySelectorAll("td[id]");
-						let inputs = document.querySelectorAll("input[name]");				
+						let inputs = document.querySelectorAll("input[name],select");				
 						for (let i = 0 ; i < valuesConsulta.length; i++) {
-							inputs[i].value = valuesConsulta[i].innerHTML;
+							if (inputs[i].nodeName == "SELECT") {
+								inputs[i].value = valuesConsulta[i].innerHTML;
+							} else {
+								inputs[i].value = valuesConsulta[i].innerHTML;
+							}
 						}
 					} else {
 						alertify.error("Erro no servidor");
