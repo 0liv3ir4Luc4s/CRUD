@@ -73,11 +73,11 @@
 				}
 			} catch (PDOException $PDOex) {
 				echo "<script>";
-				echo "alertify.error('Erro no banco de dados ao remover relacionamento');";
+				echo "console.error('Erro no banco de dados ao remover relacionamento');";
 				echo "</script>";
 			} catch (Exception $ex) {
 				echo "<script>";
-				echo "alertify.error('Erro geral ao remover relacionamento');";
+				echo "console.error('Erro geral ao remover relacionamento');";
 				echo "</script>";
 			} finally {
 				$con->fecharConexao();
@@ -89,13 +89,12 @@
 		{
 			try {
 				$con = new Conexao("controle/configs.ini");
-				$comando = $con->getPDO()->prepare("SELECT relacionamento.id, aluno.matricula, aluno.nome AS 'nome_aluno', aluno.email, curso.nome AS 'nome_curso', curso.coordenador, turma.serie FROM relacionamento INNER JOIN aluno ON relacionamento.aluno = aluno.matricula INNER JOIN curso ON relacionamento.curso = curso.id INNER JOIN turma ON relacionamento.turma = turma.id WHERE relacionamento.id={$id};");
+				$comando = $con->getPDO()->prepare("SELECT relacionamento.id, aluno.matricula, aluno.nome AS 'nome_aluno', aluno.email, curso.id AS 'id_curso', curso.nome AS 'nome_curso', curso.coordenador, turma.id AS 'id_turma', turma.serie FROM relacionamento INNER JOIN aluno ON relacionamento.aluno = aluno.matricula INNER JOIN curso ON relacionamento.curso = curso.id INNER JOIN turma ON relacionamento.turma = turma.id WHERE relacionamento.id={$id};");
 				$retorno = null;
 				if ($comando->execute()) {
 					$rel = $comando->fetchAll(PDO::FETCH_ASSOC);
 					$retorno = new Relacionamento();
 					$retorno->setId($rel[0]["id"]);
-					$retorno->setTurma($rel[0]["serie"]);
 
 					$a = new Aluno();
 					$a->setMatricula($rel[0]["matricula"]);
@@ -103,19 +102,27 @@
 					$a->setEmail($rel[0]["email"]);
 
 					$c = new Curso();
+					$c->setId($rel[0]["id_curso"]);
 					$c->setNome($rel[0]["nome_curso"]);
 					$c->setCoordenador($rel[0]["coordenador"]);
 
+					$t = new Turma();
+					$t->setId($rel[0]["id_turma"]);
+					$t->setSerie($rel[0]["serie"]);
+
+					$retorno->setTurma($t);
 					$retorno->setAluno($a);
 					$retorno->setCurso($c);
 				}
 			} catch (PDOException $PDOex) {
-				$erro = "";
-			} catch (Exception $ex) {
-				$erro = "";
-			} finally {
 				echo "<script>";
+				echo "console.error('Erro geral ao selecionar relacionamento');";
 				echo "</script>";
+			} catch (Exception $ex) {
+				echo "<script>";
+				echo "console.error('Erro geral ao selecionar relacionamento');";
+				echo "</script>";
+			} finally {
 				$con->fecharConexao();
 				return $retorno;
 			}

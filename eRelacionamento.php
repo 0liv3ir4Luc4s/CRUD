@@ -4,20 +4,22 @@
 		$rel = new Relacionamento();
 		$rel->setAluno(intval($_POST["aluno"]));
 		$rel->setTurma(intval($_POST["turma"]));
-		$rel->setCurso(intval($_POST["email"]));
+		$rel->setCurso(intval($_POST["curso"]));
 		$controle = new ControleRelacionamento();	
 		if ($controle->editar($rel, intval($_POST["id"]))) {
 			echo "<script>";
-			echo "alertify.success('Operação bem sucedida');";
+			echo "console.log('Operação bem sucedida');";
 			echo "</script>";
             header("Location: http://localhost/av_php/editarRelacionamento.php");
 		} else {
 			echo "<script>";
-			echo "alertify.error('Erro na operação');";
+			echo "console.error('Erro na operação');";
 			echo "</script>";
+			header("Location: http://localhost/av_php/editarRelacionamento.php");
 		}
 	} else {
 		echo "<script>";
-		echo "alertify.error('Não deixe campos em branco!');";
+		echo "console.error('Não deixe campos em branco!');";
 		echo "</script>";
+		header("Location: http://localhost/av_php/editarRelacionamento.php");
 	}	

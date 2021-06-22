@@ -2,39 +2,26 @@
 	require_once("controle/ControleRelacionamento.php");
 	if (!empty($_GET["id"])) {
 		$controle = new ControleRelacionamento();	
-		$relacionamento = $controle->selecionarUm(intval($_POST["id"]));
+		$relacionamento = $controle->selecionarUm(intval($_GET["id"]));
 		if (!empty($relacionamento)) {
-			echo "<table>";
-				echo "<thead>";
-					echo "<tr>";
-						echo "<th>ID</th>";
-						echo "<th>Matricula</th>";
-						echo "<th>Aluno</th>";
-						echo "<th>Email</th>";
-						echo "<th>Curso</th>";
-						echo "<th>Coordenador</th>";
-						echo "<th>Turma</th>";
-					echo "</tr>";
-				echo "</thead>"; 
-				echo "<tbody>";
-					echo "<tr>";
-						echo "<td>{$relacionamento->getId()}</td>";	
-						echo "<td>{$relacionamento->getAluno()->getMatricula()}</td>";
-						echo "<td>{$relacionamento->getAluno()->getNome()}</td>";
-						echo "<td>{$relacionamento->getAluno()->getEmail()}</td>";
-						echo "<td>{$relacionamento->getCurso()->getNome()}</td>";
-						echo "<td>{$relacionamento->getCurso()->getCoordenador()}</td>";
-						echo "<td>{$relacionamento->getTurma()}</td>";	
-					echo "</tr>";
-				echo "</tbody>";
-			echo "</table>";
+			echo "<tr>";
+				echo "<td id='id_rel'>{$relacionamento->getId()}</td>";	
+				echo "<td id='matricula_al'>{$relacionamento->getAluno()->getMatricula()}</td>";
+				echo "<td>{$relacionamento->getAluno()->getNome()}</td>";
+				echo "<td>{$relacionamento->getAluno()->getEmail()}</td>";
+				echo "<td id='id_curso' class='d-none'>{$relacionamento->getCurso()->getId()}</td>";
+				echo "<td>{$relacionamento->getCurso()->getNome()}</td>";
+				echo "<td>{$relacionamento->getCurso()->getCoordenador()}</td>";
+				echo "<td id='id_turma' class='d-none'>{$relacionamento->getTurma()->getId()}</td>";
+				echo "<td>{$relacionamento->getTurma()->getSerie()}</td>";	
+			echo "</tr>";
 		} else {
-			echo "<script>";
-			echo "alertify.error('Relacionamento não cadastrado');";
-			echo "</script>";
+			echo "<tr>";
+			echo "<td>Relacionamento não cadastrado</td>";
+			echo "</tr>";
 		}
 	} else {
-		echo "<script>";
-		echo "alertify.error('Não deixe campos em branco!');";
-		echo "</script>";
+		echo "<tr>";
+		echo "<td>Não deixe campos em branco!</td>";
+		echo "</tr>";
 	}

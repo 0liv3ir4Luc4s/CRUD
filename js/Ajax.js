@@ -22,12 +22,19 @@ class Ajax {
 		return this.ajax;
 	}
 
-	requisitar(arquivo, elemento) {
+	requisitar(arquivo, elemento, form) {
 		if (this.ajax) {
 			this.ajax.onreadystatechange = function() {
 				if (this.readyState == 4) {
 					if (this.status == 200 || this.status == 304) {
 						elemento.innerHTML = this.responseText;
+						document.getElementById("tabela").setAttribute("class", '');
+
+						let valuesConsulta = document.querySelectorAll("td[id]");
+						let inputs = document.querySelectorAll("input[name]");				
+						for (let i = 0 ; i < valuesConsulta.length; i++) {
+							inputs[i].value = valuesConsulta[i].innerHTML;
+						}
 					} else {
 						alertify.error("Erro no servidor");
 					}
