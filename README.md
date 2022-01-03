@@ -2,9 +2,6 @@
 
 # Sobre o projeto
 
-http://crud-rho.vercel.app/<br/>
-<sup>Obs: Devido a limitações no servidor, as funcionalidades de cadastro, atualização, remoção e listagem de cadastros não estão sendo executadas corretamente na prévia</sup>
-
 O "CRUD" é uma aplicação full-stack de cadastro, atualização de cadastros, remoção de cadastros e listagem de cadastros
 
 ## Layout mobile
